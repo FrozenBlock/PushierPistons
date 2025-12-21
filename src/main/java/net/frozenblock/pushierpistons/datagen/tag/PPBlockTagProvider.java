@@ -24,8 +24,8 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.frozenblock.lib.tag.api.FrozenBlockTags;
 import net.frozenblock.pushierpistons.tag.PPBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -180,10 +180,10 @@ public final class PPBlockTagProvider extends FabricTagProvider.BlockTagProvider
 	}
 
 	private TagKey<Block> getTag(String namespace, String path) {
-		return TagKey.create(this.registryKey, ResourceLocation.fromNamespaceAndPath(namespace, path));
+		return TagKey.create(this.registryKey, Identifier.fromNamespaceAndPath(namespace, path));
 	}
 
 	private ResourceKey<Block> getKey(String namespace, String path) {
-		return ResourceKey.create(this.registryKey, ResourceLocation.fromNamespaceAndPath(namespace, path));
+		return ResourceKey.create(this.registryKey, Identifier.fromNamespaceAndPath(namespace, path));
 	}
 }
