@@ -36,12 +36,12 @@
     "pushierpistons.chainstone.mixins.json",
     "pushierpistons.pushable_block_entity.mixins.json"
   ],
-  "accessWidener": "pushierpistons.accesswidener",
+  "accessWidener": "pushierpistons.classtweaker",
   "depends": {
     "frozenlib": "${frozenlib_version}",
     "fabric-api": "*",
     "minecraft": "${minecraft_version}",
-    "java": ">=21"
+    "java": ">=25"
   },
   "suggests": {
     "cloth-config": "*"

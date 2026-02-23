@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8.5",
   "package": "net.frozenblock.pushierpistons.pushable_block_entity.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
     "PistonBaseBlockMixin",
     "lectern.LecternBlockEntityMixin",
