@@ -26,13 +26,13 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ChainstoneHelper {
 
 	public static boolean isChainstoneBlock(BlockState state) {
-		final ChainstoneType type = PPConfig.CHAINSTONE_TYPE;
+		final ChainstoneType type = PPConfig.CHAINSTONE_TYPE.get();
 		if (type == ChainstoneType.DISABLED) return false;
 		return state.is(PPBlockTags.CHAINSTONE_BLOCKS);
 	}
 
 	public static boolean verifyCombination(BlockState state1, BlockState state2, Direction.Axis pushAxis) {
-		final ChainstoneType type = PPConfig.CHAINSTONE_TYPE;
+		final ChainstoneType type = PPConfig.CHAINSTONE_TYPE.get();
 		return switch (type) {
 			case CHAIN_FACING_INTO -> verifyFacingInto(state1, pushAxis);
 			case CHAINS_ALONG_SAME_AXIS -> verifyAlongSameAxis(state1, state2, pushAxis);

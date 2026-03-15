@@ -38,7 +38,7 @@ public class ShelfBlockMixin {
 		@Local(argsOnly = true, ordinal = 0) LocalRef<BlockState> stateRef
 	) {
 		// This is technically unnecessary, but is here just to be safe.
-		if (movedByPiston && PPConfig.PUSHABLE_SHELVES) {
+		if (movedByPiston && PPConfig.PUSHABLE_SHELVES.get()) {
 			final boolean powered = level.hasNeighborSignal(pos);
 			stateRef.set(state.setValue(ShelfBlock.POWERED, powered));
 		}

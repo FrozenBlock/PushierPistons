@@ -44,7 +44,7 @@ public class ShelfBlockUnpowerOnMoveMixin {
 		CallbackInfo info,
 		@Local(ordinal = 1, argsOnly = true) LocalRef<BlockState> movedStateRef
 	) {
-		if (!PPConfig.PUSHABLE_SHELVES) return;
+		if (!PPConfig.PUSHABLE_SHELVES.get()) return;
 
 		final BlockState movedState = movedStateRef.get();
 		if (movedState.is(PPBlockTags.PUSHABLE_SHELVES)) {

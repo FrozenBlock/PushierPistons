@@ -24,7 +24,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.frozenblock.lib.FrozenBools;
-import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.clothconfig.FrozenClothConfig;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
@@ -41,75 +40,44 @@ public final class PPConfigGui {
 	private static final boolean SIMPLE_COPPER_PIPES = FrozenBools.HAS_SIMPLE_COPPER_PIPES;
 
 	private static void setupEntries(ConfigCategory category, ConfigEntryBuilder entryBuilder) {
-		final PPConfig config = PPConfig.get(true);
-		final PPConfig modifiedConfig = PPConfig.getWithSync();
-		final Config<?> configInstance = PPConfig.INSTANCE;
-		final PPConfig defaultConfig = PPConfig.INSTANCE.defaultInstance();
 
 		final var chainstoneType = category.addEntry(
 			FrozenClothConfig.syncedEntry(
-				entryBuilder.startEnumSelector(text("chainstone_type"), ChainstoneType.class, modifiedConfig.chainstoneType)
-					.setDefaultValue(defaultConfig.chainstoneType)
-					.setSaveConsumer(newValue -> config.chainstoneType = newValue)
+				entryBuilder.startEnumSelector(text("chainstone_type"), ChainstoneType.class, PPConfig.CHAINSTONE_TYPE.getWithSync())
 					.setEnumNameProvider(value -> enumNameProvider("chainstone_type." + value.toString()))
-					.setTooltip(tooltip("chainstone_type"))
-					.build(),
-				config.getClass(),
-				"chainstoneType",
-				configInstance
+					.setTooltip(tooltip("chainstone_type")),
+				PPConfig.CHAINSTONE_TYPE
 			)
 		);
 
 		// STORAGE
 		final var pushableChests = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_chests"), modifiedConfig.pushableChests)
-				.setDefaultValue(defaultConfig.pushableChests)
-				.setSaveConsumer(newValue -> config.pushableChests = newValue)
-				.setTooltip(tooltip("pushable_chests"))
-				.build(),
-			config.getClass(),
-			"pushableChests",
-			configInstance
+			entryBuilder.startBooleanToggle(text("pushable_chests"), PPConfig.PUSHABLE_CHESTS.getWithSync())
+				.setTooltip(tooltip("pushable_chests")),
+			PPConfig.PUSHABLE_CHESTS
 		);
 		final var pushableBarrels = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_barrels"), modifiedConfig.pushableBarrels)
-				.setDefaultValue(defaultConfig.pushableBarrels)
-				.setSaveConsumer(newValue -> config.pushableBarrels = newValue)
-				.setTooltip(tooltip("pushable_barrels"))
-				.build(),
-			config.getClass(),
-			"pushableBarrels",
-			configInstance
+			entryBuilder.startBooleanToggle(text("pushable_barrels"), PPConfig.PUSHABLE_BARRELS.getWithSync())
+				.setTooltip(tooltip("pushable_barrels")),
+			PPConfig.PUSHABLE_BARRELS
 		);
 		final var pushableChiseledBookshelves = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_chiseled_bookshelves"), modifiedConfig.pushableChiseledBookshelves)
-				.setDefaultValue(defaultConfig.pushableChiseledBookshelves)
-				.setSaveConsumer(newValue -> config.pushableChiseledBookshelves = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_chiseled_bookshelves"), PPConfig.PUSHABLE_CHISELED_BOOKSHELVES.getWithSync())
 				.setTooltip(tooltip("pushable_chiseled_bookshelves"))
-				.build(),
-			config.getClass(),
-			"pushableChiseledBookshelves",
-			configInstance
+			,
+			PPConfig.PUSHABLE_CHISELED_BOOKSHELVES
 		);
 		final var pushableLecterns = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_lecterns"), modifiedConfig.pushableLecterns)
-				.setDefaultValue(defaultConfig.pushableLecterns)
-				.setSaveConsumer(newValue -> config.pushableLecterns = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_lecterns"), PPConfig.PUSHABLE_LECTERNS.getWithSync())
 				.setTooltip(tooltip("pushable_lecterns"))
-				.build(),
-			config.getClass(),
-			"pushableLecterns",
-			configInstance
+			,
+			PPConfig.PUSHABLE_LECTERNS
 		);
 		final var pushableShelves = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_shelves"), modifiedConfig.pushableShelves)
-				.setDefaultValue(defaultConfig.pushableShelves)
-				.setSaveConsumer(newValue -> config.pushableShelves = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_shelves"), PPConfig.PUSHABLE_SHELVES.getWithSync())
 				.setTooltip(tooltip("pushable_shelves"))
-				.build(),
-			config.getClass(),
-			"pushableShelves",
-			configInstance
+			,
+			PPConfig.PUSHABLE_SHELVES
 		);
 		final var storageCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("storage"),
 			false,
@@ -119,34 +87,22 @@ public final class PPConfigGui {
 
 		// STORAGE
 		final var pushableFurnaces = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_furnaces"), modifiedConfig.pushableFurnaces)
-				.setDefaultValue(defaultConfig.pushableFurnaces)
-				.setSaveConsumer(newValue -> config.pushableFurnaces = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_furnaces"), PPConfig.PUSHABLE_FURNACES.getWithSync())
 				.setTooltip(tooltip("pushable_furnaces"))
-				.build(),
-			config.getClass(),
-			"pushableFurnaces",
-			configInstance
+			,
+			PPConfig.PUSHABLE_FURNACES
 		);
 		final var pushableBrewingStands = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_brewing_stands"), modifiedConfig.pushableBrewingStands)
-				.setDefaultValue(defaultConfig.pushableBrewingStands)
-				.setSaveConsumer(newValue -> config.pushableBrewingStands = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_brewing_stands"), PPConfig.PUSHABLE_BREWING_STANDS.getWithSync())
 				.setTooltip(tooltip("pushable_brewing_stands"))
-				.build(),
-			config.getClass(),
-			"pushableBrewingStands",
-			configInstance
+			,
+			PPConfig.PUSHABLE_BREWING_STANDS
 		);
 		final var pushableEnchantingTables = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_enchanting_tables"), modifiedConfig.pushableEnchantingTables)
-				.setDefaultValue(defaultConfig.pushableEnchantingTables)
-				.setSaveConsumer(newValue -> config.pushableEnchantingTables = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_enchanting_tables"), PPConfig.PUSHABLE_ENCHANTING_TABLES.getWithSync())
 				.setTooltip(tooltip("pushable_enchanting_tables"))
-				.build(),
-			config.getClass(),
-			"pushableEnchantingTables",
-			configInstance
+			,
+			PPConfig.PUSHABLE_ENCHANTING_TABLES
 		);
 		final var utilityCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("utility"),
 			false,
@@ -156,44 +112,28 @@ public final class PPConfigGui {
 
 		// REDSTONE
 		final var pushableItemTransporters = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_item_transporters"), modifiedConfig.pushableItemTransporters)
-				.setDefaultValue(defaultConfig.pushableItemTransporters)
-				.setSaveConsumer(newValue -> config.pushableItemTransporters = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_item_transporters"), PPConfig.PUSHABLE_ITEM_TRANSPORTERS.getWithSync())
 				.setTooltip(tooltip("pushable_item_transporters"))
-				.build(),
-			config.getClass(),
-			"pushableItemTransporters",
-			configInstance
+			,
+			PPConfig.PUSHABLE_ITEM_TRANSPORTERS
 		);
 		final var pushableEjectors = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_ejectors"), modifiedConfig.pushableEjectors)
-				.setDefaultValue(defaultConfig.pushableEjectors)
-				.setSaveConsumer(newValue -> config.pushableEjectors = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_ejectors"), PPConfig.PUSHABLE_EJECTORS.getWithSync())
 				.setTooltip(tooltip("pushable_ejectors"))
-				.build(),
-			config.getClass(),
-			"pushableEjectors",
-			configInstance
+			,
+			PPConfig.PUSHABLE_EJECTORS
 		);
 		final var pushableCrafters = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_crafters"), modifiedConfig.pushableCrafters)
-				.setDefaultValue(defaultConfig.pushableCrafters)
-				.setSaveConsumer(newValue -> config.pushableCrafters = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_crafters"), PPConfig.PUSHABLE_CRAFTERS.getWithSync())
 				.setTooltip(tooltip("pushable_crafters"))
-				.build(),
-			config.getClass(),
-			"pushableCrafters",
-			configInstance
+			,
+			PPConfig.PUSHABLE_CRAFTERS
 		);
 		final var pushableDaylightDetectors = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_daylight_detectors"), modifiedConfig.pushableDaylightDetectors)
-				.setDefaultValue(defaultConfig.pushableDaylightDetectors)
-				.setSaveConsumer(newValue -> config.pushableDaylightDetectors = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_daylight_detectors"), PPConfig.PUSHABLE_DAYLIGHT_DETECTORS.getWithSync())
 				.setTooltip(tooltip("pushable_daylight_detectors"))
-				.build(),
-			config.getClass(),
-			"pushableDaylightDetectors",
-			configInstance
+			,
+			PPConfig.PUSHABLE_DAYLIGHT_DETECTORS
 		);
 		final var redstoneCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("redstone"),
 			false,
@@ -203,44 +143,28 @@ public final class PPConfigGui {
 
 		// COMBAT
 		final var pushableCreakingHearts = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_creaking_hearts"), modifiedConfig.pushableCreakingHearts)
-				.setDefaultValue(defaultConfig.pushableCreakingHearts)
-				.setSaveConsumer(newValue -> config.pushableCreakingHearts = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_creaking_hearts"), PPConfig.PUSHABLE_CREAKING_HEARTS.getWithSync())
 				.setTooltip(tooltip("pushable_creaking_hearts"))
-				.build(),
-			config.getClass(),
-			"pushableCreakingHearts",
-			configInstance
+			,
+			PPConfig.PUSHABLE_CREAKING_HEARTS
 		);
 		final var pushableSpawners = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_spawners"), modifiedConfig.pushableSpawners)
-				.setDefaultValue(defaultConfig.pushableSpawners)
-				.setSaveConsumer(newValue -> config.pushableSpawners = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_spawners"), PPConfig.PUSHABLE_SPAWNERS.getWithSync())
 				.setTooltip(tooltip("pushable_spawners"))
-				.build(),
-			config.getClass(),
-			"pushableSpawners",
-			configInstance
+			,
+			PPConfig.PUSHABLE_SPAWNERS
 		);
 		final var pushableTrialSpawners = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_trial_spawners"), modifiedConfig.pushableTrialSpawners)
-				.setDefaultValue(defaultConfig.pushableTrialSpawners)
-				.setSaveConsumer(newValue -> config.pushableTrialSpawners = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_trial_spawners"), PPConfig.PUSHABLE_TRIAL_SPAWNERS.getWithSync())
 				.setTooltip(tooltip("pushable_trial_spawners"))
-				.build(),
-			config.getClass(),
-			"pushableTrialSpawners",
-			configInstance
+			,
+			PPConfig.PUSHABLE_TRIAL_SPAWNERS
 		);
 		final var pushableVaults = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_vaults"), modifiedConfig.pushableVaults)
-				.setDefaultValue(defaultConfig.pushableVaults)
-				.setSaveConsumer(newValue -> config.pushableVaults = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_vaults"), PPConfig.PUSHABLE_VAULTS.getWithSync())
 				.setTooltip(tooltip("pushable_vaults"))
-				.build(),
-			config.getClass(),
-			"pushableVaults",
-			configInstance
+			,
+			PPConfig.PUSHABLE_VAULTS
 		);
 		final var combatCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("combat"),
 			false,
@@ -250,24 +174,16 @@ public final class PPConfigGui {
 
 		// BUFFS
 		final var pushableBeacons = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_beacons"), modifiedConfig.pushableBeacons)
-				.setDefaultValue(defaultConfig.pushableBeacons)
-				.setSaveConsumer(newValue -> config.pushableBeacons = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_beacons"), PPConfig.PUSHABLE_BEACONS.getWithSync())
 				.setTooltip(tooltip("pushable_beacons"))
-				.build(),
-			config.getClass(),
-			"pushableBeacons",
-			configInstance
+			,
+			PPConfig.PUSHABLE_BEACONS
 		);
 		final var pushableConduits = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_conduits"), modifiedConfig.pushableConduits)
-				.setDefaultValue(defaultConfig.pushableConduits)
-				.setSaveConsumer(newValue -> config.pushableConduits = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_conduits"), PPConfig.PUSHABLE_CONDUITS.getWithSync())
 				.setTooltip(tooltip("pushable_conduits"))
-				.build(),
-			config.getClass(),
-			"pushableConduits",
-			configInstance
+			,
+			PPConfig.PUSHABLE_CONDUITS
 		);
 		final var buffCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("buff"),
 			false,
@@ -277,34 +193,22 @@ public final class PPConfigGui {
 
 		// OTHER
 		final var pushableBeehives = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_beehives"), modifiedConfig.pushableBeehives)
-				.setDefaultValue(defaultConfig.pushableBeehives)
-				.setSaveConsumer(newValue -> config.pushableBeehives = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_beehives"), PPConfig.PUSHABLE_BEEHIVES.getWithSync())
 				.setTooltip(tooltip("pushable_beehives"))
-				.build(),
-			config.getClass(),
-			"pushableBeehives",
-			configInstance
+			,
+			PPConfig.PUSHABLE_BEEHIVES
 		);
 		final var pushableCampfires = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_campfires"), modifiedConfig.pushableCampfires)
-				.setDefaultValue(defaultConfig.pushableCampfires)
-				.setSaveConsumer(newValue -> config.pushableCampfires = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_campfires"), PPConfig.PUSHABLE_CAMPFIRES.getWithSync())
 				.setTooltip(tooltip("pushable_campfires"))
-				.build(),
-			config.getClass(),
-			"pushableCampfires",
-			configInstance
+			,
+			PPConfig.PUSHABLE_CAMPFIRES
 		);
 		final var pushableSigns = FrozenClothConfig.syncedEntry(
-			entryBuilder.startBooleanToggle(text("pushable_signs"), modifiedConfig.pushableSigns)
-				.setDefaultValue(defaultConfig.pushableSigns)
-				.setSaveConsumer(newValue -> config.pushableSigns = newValue)
+			entryBuilder.startBooleanToggle(text("pushable_signs"), PPConfig.PUSHABLE_SIGNS.getWithSync())
 				.setTooltip(tooltip("pushable_signs"))
-				.build(),
-			config.getClass(),
-			"pushableSigns",
-			configInstance
+			,
+			PPConfig.PUSHABLE_SIGNS
 		);
 		final var otherCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("other"),
 			false,
@@ -315,14 +219,10 @@ public final class PPConfigGui {
 		// WILDER WILD
 		if (WILDERWILD) {
 			final var pushableGeysers = FrozenClothConfig.syncedEntry(
-				entryBuilder.startBooleanToggle(text("pushable_geysers"), modifiedConfig.pushableGeysers)
-					.setDefaultValue(defaultConfig.pushableGeysers)
-					.setSaveConsumer(newValue -> config.pushableGeysers = newValue)
+				entryBuilder.startBooleanToggle(text("pushable_geysers"), PPConfig.PUSHABLE_GEYSERS.getWithSync())
 					.setTooltip(tooltip("pushable_geysers"))
-					.build(),
-				config.getClass(),
-				"pushableGeysers",
-				configInstance
+					,
+				PPConfig.PUSHABLE_GEYSERS
 			);
 			final var wilderWildCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("wilderwild"),
 				false,
@@ -334,14 +234,10 @@ public final class PPConfigGui {
 		// TRAILIER TALES
 		if (TRAILIERTALES) {
 			final var pushableSurveyors = FrozenClothConfig.syncedEntry(
-				entryBuilder.startBooleanToggle(text("pushable_surveyors"), modifiedConfig.pushableSurveyors)
-					.setDefaultValue(defaultConfig.pushableSurveyors)
-					.setSaveConsumer(newValue -> config.pushableSurveyors = newValue)
+				entryBuilder.startBooleanToggle(text("pushable_surveyors"), PPConfig.PUSHABLE_SURVEYORS.getWithSync())
 					.setTooltip(tooltip("pushable_surveyors"))
-					.build(),
-				config.getClass(),
-				"pushableSurveyors",
-				configInstance
+					,
+				PPConfig.PUSHABLE_SURVEYORS
 			);
 			final var trailierTalesCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("trailiertales"),
 				false,
@@ -353,14 +249,10 @@ public final class PPConfigGui {
 		// NETHERIER NETHER
 		if (NETHERIERNETHER) {
 			final var pushableNetherReactorCores = FrozenClothConfig.syncedEntry(
-				entryBuilder.startBooleanToggle(text("pushable_nether_reactor_cores"), modifiedConfig.pushableNetherReactorCores)
-					.setDefaultValue(defaultConfig.pushableNetherReactorCores)
-					.setSaveConsumer(newValue -> config.pushableNetherReactorCores = newValue)
+				entryBuilder.startBooleanToggle(text("pushable_nether_reactor_cores"), PPConfig.PUSHABLE_NETHER_REACTOR_CORES.getWithSync())
 					.setTooltip(tooltip("pushable_nether_reactor_cores"))
-					.build(),
-				config.getClass(),
-				"pushableNetherReactorCores",
-				configInstance
+					,
+				PPConfig.PUSHABLE_NETHER_REACTOR_CORES
 			);
 			final var netherierNetherCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("netheriernether"),
 				false,
@@ -372,24 +264,16 @@ public final class PPConfigGui {
 		// SIMPLE COPPER PIPES
 		if (SIMPLE_COPPER_PIPES) {
 			final var pushableCopperPipes = FrozenClothConfig.syncedEntry(
-				entryBuilder.startBooleanToggle(text("pushable_copper_pipes"), modifiedConfig.pushableCopperPipes)
-					.setDefaultValue(defaultConfig.pushableCopperPipes)
-					.setSaveConsumer(newValue -> config.pushableCopperPipes = newValue)
+				entryBuilder.startBooleanToggle(text("pushable_copper_pipes"), PPConfig.PUSHABLE_COPPER_PIPES.getWithSync())
 					.setTooltip(tooltip("pushable_copper_pipes"))
-					.build(),
-				config.getClass(),
-				"pushableCopperPipes",
-				configInstance
+					,
+				PPConfig.PUSHABLE_COPPER_PIPES
 			);
 			final var pushableCopperFittings = FrozenClothConfig.syncedEntry(
-				entryBuilder.startBooleanToggle(text("pushable_copper_fittings"), modifiedConfig.pushableCopperFittings)
-					.setDefaultValue(defaultConfig.pushableCopperFittings)
-					.setSaveConsumer(newValue -> config.pushableCopperFittings = newValue)
+				entryBuilder.startBooleanToggle(text("pushable_copper_fittings"), PPConfig.PUSHABLE_COPPER_FITTINGS.getWithSync())
 					.setTooltip(tooltip("pushable_copper_fittings"))
-					.build(),
-				config.getClass(),
-				"pushableCopperFittings",
-				configInstance
+					,
+				PPConfig.PUSHABLE_COPPER_FITTINGS
 			);
 			final var simpleCopperPipesCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("simple_copper_pipes"),
 				false,
@@ -401,7 +285,7 @@ public final class PPConfigGui {
 
 	public static Screen buildScreen(Screen parent) {
 		final var configBuilder = ConfigBuilder.create().setParentScreen(parent).setTitle(text("component.title"));
-		configBuilder.setSavingRunnable(PPConfig.INSTANCE::save);
+		configBuilder.setSavingRunnable(PPConfig.CONFIG::save);
 		final var config = configBuilder.getOrCreateCategory(text("config"));
 		final ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
 		setupEntries(config, entryBuilder);

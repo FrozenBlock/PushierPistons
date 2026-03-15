@@ -46,7 +46,7 @@ public class ShelfBlockStickingMixin {
 		)
 	)
 	private boolean pushierPistons$shelfSticking(BlockState state, Operation<Boolean> original) {
-		if (PPConfig.PUSHABLE_SHELVES && state.is(PPBlockTags.PUSHABLE_SHELVES)) return true;
+		if (PPConfig.PUSHABLE_SHELVES.get() && state.is(PPBlockTags.PUSHABLE_SHELVES)) return true;
 		return original.call(state);
 	}
 

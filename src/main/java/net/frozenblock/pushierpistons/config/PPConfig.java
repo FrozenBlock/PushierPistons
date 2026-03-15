@@ -17,213 +17,84 @@
 
 package net.frozenblock.pushierpistons.config;
 
-import net.frozenblock.lib.config.api.instance.Config;
-import net.frozenblock.lib.config.api.instance.json.JsonConfig;
-import net.frozenblock.lib.config.api.instance.json.JsonType;
-import net.frozenblock.lib.config.api.registry.ConfigRegistry;
-import net.frozenblock.lib.config.api.sync.annotation.EntrySyncData;
+import net.frozenblock.lib.config.v2.config.ConfigData;
+import net.frozenblock.lib.config.v2.config.ConfigSettings;
+import net.frozenblock.lib.config.v2.entry.ConfigEntry;
+import net.frozenblock.lib.config.v2.entry.EntryType;
+import net.frozenblock.lib.config.v2.registry.ID;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
 
 public class PPConfig {
-	public static final Config<PPConfig> INSTANCE = ConfigRegistry.register(
-		new JsonConfig<>(
-			PPConstants.MOD_ID,
-			PPConfig.class,
-			JsonType.JSON5_UNQUOTED_KEYS,
-			true
-		) {
-			@Override
-			public void onSave() throws Exception {
-				super.onSave();
-				this.onSync(null);
-			}
-
-			@Override
-			public void onSync(PPConfig syncInstance) {
-				final var config = this.config();
-
-				// CHAINSTONE
-				CHAINSTONE_TYPE = config.chainstoneType;
-
-				// STORAGE
-				PUSHABLE_CHESTS = config.pushableChests;
-				PUSHABLE_BARRELS = config.pushableBarrels;
-				PUSHABLE_CHISELED_BOOKSHELVES = config.pushableChiseledBookshelves;
-				PUSHABLE_LECTERNS = config.pushableLecterns;
-				PUSHABLE_SHELVES = config.pushableShelves;
-
-				// UTILITY
-				PUSHABLE_FURNACES = config.pushableFurnaces;
-				PUSHABLE_BREWING_STANDS = config.pushableBrewingStands;
-				PUSHABLE_ENCHANTING_TABLES = config.pushableEnchantingTables;
-
-				// REDSTONE
-				PUSHABLE_ITEM_TRANSPORTERS = config.pushableItemTransporters;
-				PUSHABLE_EJECTORS = config.pushableEjectors;
-				PUSHABLE_CRAFTERS = config.pushableCrafters;
-				PUSHABLE_DAYLIGHT_DETECTORS = config.pushableDaylightDetectors;
-
-				// COMBAT
-				PUSHABLE_CREAKING_HEARTS = config.pushableCreakingHearts;
-				PUSHABLE_SPAWNERS = config.pushableSpawners;
-				PUSHABLE_TRIAL_SPAWNERS = config.pushableTrialSpawners;
-				PUSHABLE_VAULTS = config.pushableVaults;
-
-				// BUFFS
-				PUSHABLE_BEACONS = config.pushableBeacons;
-				PUSHABLE_CONDUITS = config.pushableConduits;
-
-				// OTHER
-				PUSHABLE_BEEHIVES = config.pushableBeehives;
-				PUSHABLE_CAMPFIRES = config.pushableCampfires;
-				PUSHABLE_SIGNS = config.pushableSigns;
-
-				// WILDER WILD
-				PUSHABLE_GEYSERS = config.pushableGeysers;
-
-				// TRAILIER TALES
-				PUSHABLE_SURVEYORS = config.pushableSurveyors;
-
-				// NETHERIER NETHER
-				PUSHABLE_NETHER_REACTOR_CORES = config.pushableNetherReactorCores;
-
-				// SIMPLE COPPER PIPES
-				PUSHABLE_COPPER_PIPES = config.pushableCopperPipes;
-				PUSHABLE_COPPER_FITTINGS = config.pushableCopperFittings;
-			}
-		}
+	public static final ConfigData<?> CONFIG = ConfigData.createAndRegister(
+		ID.of(PPConstants.MOD_ID, "main"),
+		ConfigSettings.JSON5_UNQUOTED_KEYS
 	);
 
 	// CHAINSTONE
-	public static volatile ChainstoneType CHAINSTONE_TYPE = ChainstoneType.CHAIN_FACING_INTO;
-	@EntrySyncData("chainstoneType")
-	public ChainstoneType chainstoneType = ChainstoneType.CHAIN_FACING_INTO;
+	public static final ConfigEntry<ChainstoneType> CHAINSTONE_TYPE = CONFIG.entry("chainstoneType",
+		ChainstoneType.ENTRY_TYPE, ChainstoneType.CHAIN_FACING_INTO
+	);
 
 	// STORAGE
-	public static volatile boolean PUSHABLE_CHESTS = false;
-	@EntrySyncData("pushableChests")
-	public boolean pushableChests = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_CHESTS = CONFIG.entry("pushableChests", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_BARRELS = false;
-	@EntrySyncData("pushableBarrels")
-	public boolean pushableBarrels = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_BARRELS = CONFIG.entry("pushableBarrels", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_CHISELED_BOOKSHELVES = true;
-	@EntrySyncData("pushableChiseledBookshelves")
-	public boolean pushableChiseledBookshelves = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_CHISELED_BOOKSHELVES = CONFIG.entry("pushableChiseledBookshelves", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_LECTERNS = true;
-	@EntrySyncData("pushableLecterns")
-	public boolean pushableLecterns = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_LECTERNS = CONFIG.entry("pushableLecterns", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_SHELVES = true;
-	@EntrySyncData("pushableShelves")
-	public boolean pushableShelves = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_SHELVES = CONFIG.entry("pushableShelves", EntryType.BOOL, true);
 
 	// UTILITY
-	public static volatile boolean PUSHABLE_FURNACES = true;
-	@EntrySyncData("pushableFurnaces")
-	public boolean pushableFurnaces = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_FURNACES = CONFIG.entry("pushableFurnaces", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_BREWING_STANDS = true;
-	@EntrySyncData("pushableBrewingStands")
-	public boolean pushableBrewingStands = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_BREWING_STANDS = CONFIG.entry("pushableBrewingStands", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_ENCHANTING_TABLES = true;
-	@EntrySyncData("pushableEnchantingTables")
-	public boolean pushableEnchantingTables = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_ENCHANTING_TABLES = CONFIG.entry("pushableEnchantingTables", EntryType.BOOL, true);
 
 	// REDSTONE
-	public static volatile boolean PUSHABLE_ITEM_TRANSPORTERS = false;
-	@EntrySyncData("pushableItemTransporters")
-	public boolean pushableItemTransporters = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_ITEM_TRANSPORTERS = CONFIG.entry("pushableItemTransporters", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_EJECTORS = true;
-	@EntrySyncData("pushableEjectors")
-	public boolean pushableEjectors = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_EJECTORS = CONFIG.entry("pushableEjectors", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_CRAFTERS = true;
-	@EntrySyncData("pushableCrafters")
-	public boolean pushableCrafters = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_CRAFTERS = CONFIG.entry("pushableCrafters", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_DAYLIGHT_DETECTORS = true;
-	@EntrySyncData("pushableDaylightDetectors")
-	public boolean pushableDaylightDetectors = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_DAYLIGHT_DETECTORS = CONFIG.entry("pushableDaylightDetectors", EntryType.BOOL, true);
 
 	// COMBAT
-	public static volatile boolean PUSHABLE_CREAKING_HEARTS = false;
-	@EntrySyncData("pushableCreakingHearts")
-	public boolean pushableCreakingHearts = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_CREAKING_HEARTS = CONFIG.entry("pushableCreakingHearts", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_SPAWNERS = false;
-	@EntrySyncData("pushableSpawners")
-	public boolean pushableSpawners = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_SPAWNERS = CONFIG.entry("pushableSpawners", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_TRIAL_SPAWNERS = false;
-	@EntrySyncData("pushableTrialSpawners")
-	public boolean pushableTrialSpawners = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_TRIAL_SPAWNERS = CONFIG.entry("pushableTrialSpawners", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_VAULTS = false;
-	@EntrySyncData("pushableVaults")
-	public boolean pushableVaults = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_VAULTS = CONFIG.entry("pushableVaults", EntryType.BOOL, false);
 
 	// BUFFS
-	public static volatile boolean PUSHABLE_BEACONS = true;
-	@EntrySyncData("pushableBeacons")
-	public boolean pushableBeacons = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_BEACONS = CONFIG.entry("pushableBeacons", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_CONDUITS = true;
-	@EntrySyncData("pushableConduits")
-	public boolean pushableConduits = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_CONDUITS = CONFIG.entry("pushableConduits", EntryType.BOOL, true);
 
 	// OTHER
-	public static volatile boolean PUSHABLE_BEEHIVES = true;
-	@EntrySyncData("pushableBeehives")
-	public boolean pushableBeehives = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_BEEHIVES = CONFIG.entry("pushableBeehives", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_CAMPFIRES = true;
-	@EntrySyncData("pushableCampfires")
-	public boolean pushableCampfires = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_CAMPFIRES = CONFIG.entry("pushableCampfires", EntryType.BOOL, true);
 
-	public static volatile boolean PUSHABLE_SIGNS = false;
-	@EntrySyncData("pushableSigns")
-	public boolean pushableSigns = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_SIGNS = CONFIG.entry("pushableSigns", EntryType.BOOL, false);
 
 	// WILDER WILD
-	public static volatile boolean PUSHABLE_GEYSERS = true;
-	@EntrySyncData("pushableGeysers")
-	public boolean pushableGeysers = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_GEYSERS = CONFIG.entry("pushableGeysers", EntryType.BOOL, true);
 
 	// TRAILIER TALES
-	public static volatile boolean PUSHABLE_SURVEYORS = true;
-	@EntrySyncData("pushableSurveyors")
-	public boolean pushableSurveyors = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_SURVEYORS = CONFIG.entry("pushableSurveyors", EntryType.BOOL, true);
 
 	// NETHERIER NETHER
-	public static volatile boolean PUSHABLE_NETHER_REACTOR_CORES = true;
-	@EntrySyncData("pushableNetherReactorCores")
-	public boolean pushableNetherReactorCores = true;
+	public static final ConfigEntry<Boolean> PUSHABLE_NETHER_REACTOR_CORES = CONFIG.entry("pushableNetherReactorCores", EntryType.BOOL, true);
 
 	// SIMPLE COPPER PIPES
-	public static volatile boolean PUSHABLE_COPPER_PIPES = false;
-	@EntrySyncData("pushableCopperPipes")
-	public boolean pushableCopperPipes = false;
+	public static final ConfigEntry<Boolean> PUSHABLE_COPPER_PIPES = CONFIG.entry("pushableCopperPipes", EntryType.BOOL, false);
 
-	public static volatile boolean PUSHABLE_COPPER_FITTINGS = false;
-	@EntrySyncData("pushableCopperFittings")
-	public boolean pushableCopperFittings = false;
-
-	public static PPConfig get(boolean real) {
-		if (real) return INSTANCE.instance();
-		return INSTANCE.config();
-	}
-
-	public static PPConfig get() {
-		return get(false);
-	}
-
-	public static PPConfig getWithSync() {
-		return INSTANCE.configWithSync();
-	}
+	public static final ConfigEntry<Boolean> PUSHABLE_COPPER_FITTINGS = CONFIG.entry("pushableCopperFittings", EntryType.BOOL, false);
 }
