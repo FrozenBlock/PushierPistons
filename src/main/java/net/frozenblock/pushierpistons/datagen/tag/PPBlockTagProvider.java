@@ -72,10 +72,7 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 			// TRAILIER TALES
 			.addOptionalTag(PPBlockTags.PUSHABLE_SURVEYORS)
 			// NETHERIER NETHER
-			.addOptionalTag(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES)
-			// SIMPLE COPPER PIPES
-			.addOptionalTag(PPBlockTags.PUSHABLE_COPPER_PIPES)
-			.addOptionalTag(PPBlockTags.PUSHABLE_COPPER_FITTINGS);
+			.addOptionalTag(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES);
 
 		// STORAGE
 		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CHESTS)
@@ -157,13 +154,6 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 		// NETHERIER NETHER
 		this.builder(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES)
 			.addOptional(getKey("netheriernether", "nether_reactor_core"));
-
-		// SIMPLE_COPPER_PIPES
-		this.builder(PPBlockTags.PUSHABLE_COPPER_PIPES)
-			.addOptionalTag(getTag("simple_copper_pipes", "copper_pipes"));
-
-		this.builder(PPBlockTags.PUSHABLE_COPPER_FITTINGS)
-			.addOptionalTag(getTag("simple_copper_pipes", "copper_fittings"));
 
 		// EXCLUSIONS
 		this.valueLookupBuilder(PPBlockTags.EXCLUDED_BLOCK_ENTITIES)

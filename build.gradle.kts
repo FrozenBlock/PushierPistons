@@ -33,8 +33,6 @@ val githubActions: Boolean = System.getenv("GITHUB_ACTIONS") == "true"
 val licenseChecks: Boolean = githubActions
 
 val minecraft_version: String by project
-val quilt_mappings: String by project
-val parchment_mappings: String by project
 val loader_version: String by project
 
 val mod_id: String by project
@@ -47,7 +45,6 @@ val fabric_api_version: String by project
 val frozenlib_version: String by project
 
 val modmenu_version: String by project
-val placeholder_api_version: String by project
 val cloth_config_version: String by project
 
 base {
@@ -170,8 +167,7 @@ dependencies {
     api("maven.modrinth:frozenlib:$frozenlib_version")
 
     // Mod Menu
-    compileOnly("com.terraformersmc:modmenu:$modmenu_version")
-    runtimeOnly("maven.modrinth:placeholder-api:$placeholder_api_version")
+    implementation("com.terraformersmc:modmenu:$modmenu_version")
 
     // Cloth Config
     implementation("me.shedaniel.cloth:cloth-config-fabric:$cloth_config_version") {
@@ -203,6 +199,7 @@ tasks {
                 "**/lang/*.json",
                 "**/.cache/*",
                 "**/*.accesswidener",
+                "**/*.classtweaker",
                 "**/*.nbt",
                 "**/*.png",
                 "**/*.ogg",

@@ -72,10 +72,6 @@ public class PushableBlockEntityHelper {
 		// NETHERIER NETHER
 		if (!PPConfig.PUSHABLE_NETHER_REACTOR_CORES.get() &&state.is(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES)) return true;
 
-		// SIMPLE COPPER PIPES
-		if (!PPConfig.PUSHABLE_COPPER_PIPES.get() &&state.is(PPBlockTags.PUSHABLE_COPPER_PIPES)) return true;
-		if (!PPConfig.PUSHABLE_COPPER_FITTINGS.get() &&state.is(PPBlockTags.PUSHABLE_COPPER_FITTINGS)) return true;
-
 		return false;
 	}
 
