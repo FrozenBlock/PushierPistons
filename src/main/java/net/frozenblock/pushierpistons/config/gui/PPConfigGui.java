@@ -24,7 +24,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.frozenblock.lib.FrozenBools;
-import net.frozenblock.lib.config.clothconfig.FrozenClothConfig;
+import net.frozenblock.lib.config.clothconfig.FrozenLibClothConfigGuiHelper;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
 import net.frozenblock.pushierpistons.config.PPConfig;
@@ -40,7 +40,7 @@ public final class PPConfigGui {
 
 	private static void setupEntries(ConfigCategory category, ConfigEntryBuilder entryBuilder) {
 		category.addEntry(
-			FrozenClothConfig.syncedEntry(
+			FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startEnumSelector(text("chainstone_type"), ChainstoneType.class, PPConfig.CHAINSTONE_TYPE.getWithSync())
 					.setEnumNameProvider(value -> enumNameProvider("chainstone_type." + value.toString()))
 					.setTooltip(tooltip("chainstone_type")),
@@ -49,147 +49,147 @@ public final class PPConfigGui {
 		);
 
 		// STORAGE
-		final var pushableChests = FrozenClothConfig.syncedEntry(
+		final var pushableChests = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_chests"), PPConfig.PUSHABLE_CHESTS.getWithSync())
 				.setTooltip(tooltip("pushable_chests")),
 			PPConfig.PUSHABLE_CHESTS
 		);
-		final var pushableBarrels = FrozenClothConfig.syncedEntry(
+		final var pushableBarrels = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_barrels"), PPConfig.PUSHABLE_BARRELS.getWithSync())
 				.setTooltip(tooltip("pushable_barrels")),
 			PPConfig.PUSHABLE_BARRELS
 		);
-		final var pushableChiseledBookshelves = FrozenClothConfig.syncedEntry(
+		final var pushableChiseledBookshelves = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_chiseled_bookshelves"), PPConfig.PUSHABLE_CHISELED_BOOKSHELVES.getWithSync())
 				.setTooltip(tooltip("pushable_chiseled_bookshelves")),
 			PPConfig.PUSHABLE_CHISELED_BOOKSHELVES
 		);
-		final var pushableLecterns = FrozenClothConfig.syncedEntry(
+		final var pushableLecterns = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_lecterns"), PPConfig.PUSHABLE_LECTERNS.getWithSync())
 				.setTooltip(tooltip("pushable_lecterns")),
 			PPConfig.PUSHABLE_LECTERNS
 		);
-		final var pushableShelves = FrozenClothConfig.syncedEntry(
+		final var pushableShelves = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_shelves"), PPConfig.PUSHABLE_SHELVES.getWithSync())
 				.setTooltip(tooltip("pushable_shelves")),
 			PPConfig.PUSHABLE_SHELVES
 		);
-		FrozenClothConfig.createSubCategory(entryBuilder, category, text("storage"),
+		FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("storage"),
 			false,
 			tooltip("storage"),
 			pushableChests, pushableBarrels, pushableChiseledBookshelves, pushableLecterns, pushableShelves
 		);
 
 		// STORAGE
-		final var pushableFurnaces = FrozenClothConfig.syncedEntry(
+		final var pushableFurnaces = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_furnaces"), PPConfig.PUSHABLE_FURNACES.getWithSync())
 				.setTooltip(tooltip("pushable_furnaces")),
 			PPConfig.PUSHABLE_FURNACES
 		);
-		final var pushableBrewingStands = FrozenClothConfig.syncedEntry(
+		final var pushableBrewingStands = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_brewing_stands"), PPConfig.PUSHABLE_BREWING_STANDS.getWithSync())
 				.setTooltip(tooltip("pushable_brewing_stands")),
 			PPConfig.PUSHABLE_BREWING_STANDS
 		);
-		final var pushableEnchantingTables = FrozenClothConfig.syncedEntry(
+		final var pushableEnchantingTables = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_enchanting_tables"), PPConfig.PUSHABLE_ENCHANTING_TABLES.getWithSync())
 				.setTooltip(tooltip("pushable_enchanting_tables")),
 			PPConfig.PUSHABLE_ENCHANTING_TABLES
 		);
-		FrozenClothConfig.createSubCategory(entryBuilder, category, text("utility"),
+		FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("utility"),
 			false,
 			tooltip("utility"),
 			pushableFurnaces, pushableBrewingStands, pushableEnchantingTables
 		);
 
 		// REDSTONE
-		final var pushableItemTransporters = FrozenClothConfig.syncedEntry(
+		final var pushableItemTransporters = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_item_transporters"), PPConfig.PUSHABLE_ITEM_TRANSPORTERS.getWithSync())
 				.setTooltip(tooltip("pushable_item_transporters")),
 			PPConfig.PUSHABLE_ITEM_TRANSPORTERS
 		);
-		final var pushableEjectors = FrozenClothConfig.syncedEntry(
+		final var pushableEjectors = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_ejectors"), PPConfig.PUSHABLE_EJECTORS.getWithSync())
 				.setTooltip(tooltip("pushable_ejectors")),
 			PPConfig.PUSHABLE_EJECTORS
 		);
-		final var pushableCrafters = FrozenClothConfig.syncedEntry(
+		final var pushableCrafters = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_crafters"), PPConfig.PUSHABLE_CRAFTERS.getWithSync())
 				.setTooltip(tooltip("pushable_crafters")),
 			PPConfig.PUSHABLE_CRAFTERS
 		);
-		final var pushableDaylightDetectors = FrozenClothConfig.syncedEntry(
+		final var pushableDaylightDetectors = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_daylight_detectors"), PPConfig.PUSHABLE_DAYLIGHT_DETECTORS.getWithSync())
 				.setTooltip(tooltip("pushable_daylight_detectors")),
 			PPConfig.PUSHABLE_DAYLIGHT_DETECTORS
 		);
-		FrozenClothConfig.createSubCategory(entryBuilder, category, text("redstone"),
+		FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("redstone"),
 			false,
 			tooltip("redstone"),
 			pushableItemTransporters, pushableEjectors, pushableCrafters, pushableDaylightDetectors
 		);
 
 		// COMBAT
-		final var pushableCreakingHearts = FrozenClothConfig.syncedEntry(
+		final var pushableCreakingHearts = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_creaking_hearts"), PPConfig.PUSHABLE_CREAKING_HEARTS.getWithSync())
 				.setTooltip(tooltip("pushable_creaking_hearts")),
 			PPConfig.PUSHABLE_CREAKING_HEARTS
 		);
-		final var pushableSpawners = FrozenClothConfig.syncedEntry(
+		final var pushableSpawners = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_spawners"), PPConfig.PUSHABLE_SPAWNERS.getWithSync())
 				.setTooltip(tooltip("pushable_spawners")),
 			PPConfig.PUSHABLE_SPAWNERS
 		);
-		final var pushableTrialSpawners = FrozenClothConfig.syncedEntry(
+		final var pushableTrialSpawners = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_trial_spawners"), PPConfig.PUSHABLE_TRIAL_SPAWNERS.getWithSync())
 				.setTooltip(tooltip("pushable_trial_spawners")),
 			PPConfig.PUSHABLE_TRIAL_SPAWNERS
 		);
-		final var pushableVaults = FrozenClothConfig.syncedEntry(
+		final var pushableVaults = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_vaults"), PPConfig.PUSHABLE_VAULTS.getWithSync())
 				.setTooltip(tooltip("pushable_vaults")),
 			PPConfig.PUSHABLE_VAULTS
 		);
-		FrozenClothConfig.createSubCategory(entryBuilder, category, text("combat"),
+		FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("combat"),
 			false,
 			tooltip("combat"),
 			pushableCreakingHearts, pushableSpawners, pushableTrialSpawners, pushableVaults
 		);
 
 		// BUFFS
-		final var pushableBeacons = FrozenClothConfig.syncedEntry(
+		final var pushableBeacons = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_beacons"), PPConfig.PUSHABLE_BEACONS.getWithSync())
 				.setTooltip(tooltip("pushable_beacons")),
 			PPConfig.PUSHABLE_BEACONS
 		);
-		final var pushableConduits = FrozenClothConfig.syncedEntry(
+		final var pushableConduits = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_conduits"), PPConfig.PUSHABLE_CONDUITS.getWithSync())
 				.setTooltip(tooltip("pushable_conduits")),
 			PPConfig.PUSHABLE_CONDUITS
 		);
-		final var buffCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("buff"),
+		final var buffCategory = FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("buff"),
 			false,
 			tooltip("buff"),
 			pushableBeacons, pushableConduits
 		);
 
 		// OTHER
-		final var pushableBeehives = FrozenClothConfig.syncedEntry(
+		final var pushableBeehives = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_beehives"), PPConfig.PUSHABLE_BEEHIVES.getWithSync())
 				.setTooltip(tooltip("pushable_beehives")),
 			PPConfig.PUSHABLE_BEEHIVES
 		);
-		final var pushableCampfires = FrozenClothConfig.syncedEntry(
+		final var pushableCampfires = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_campfires"), PPConfig.PUSHABLE_CAMPFIRES.getWithSync())
 				.setTooltip(tooltip("pushable_campfires")),
 			PPConfig.PUSHABLE_CAMPFIRES
 		);
-		final var pushableSigns = FrozenClothConfig.syncedEntry(
+		final var pushableSigns = FrozenLibClothConfigGuiHelper.syncedEntry(
 			entryBuilder.startBooleanToggle(text("pushable_signs"), PPConfig.PUSHABLE_SIGNS.getWithSync())
 				.setTooltip(tooltip("pushable_signs")),
 			PPConfig.PUSHABLE_SIGNS
 		);
-		FrozenClothConfig.createSubCategory(entryBuilder, category, text("other"),
+		FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("other"),
 			false,
 			tooltip("other"),
 			pushableBeehives, pushableCampfires, pushableSigns
@@ -197,12 +197,12 @@ public final class PPConfigGui {
 
 		// WILDER WILD
 		if (WILDERWILD) {
-			final var pushableGeysers = FrozenClothConfig.syncedEntry(
+			final var pushableGeysers = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_geysers"), PPConfig.PUSHABLE_GEYSERS.getWithSync())
 					.setTooltip(tooltip("pushable_geysers")),
 				PPConfig.PUSHABLE_GEYSERS
 			);
-			final var wilderWildCategory = FrozenClothConfig.createSubCategory(entryBuilder, category, text("wilderwild"),
+			final var wilderWildCategory = FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("wilderwild"),
 				false,
 				tooltip("wilderwild"),
 				pushableGeysers
@@ -211,12 +211,12 @@ public final class PPConfigGui {
 
 		// TRAILIER TALES
 		if (TRAILIERTALES) {
-			final var pushableSurveyors = FrozenClothConfig.syncedEntry(
+			final var pushableSurveyors = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_surveyors"), PPConfig.PUSHABLE_SURVEYORS.getWithSync())
 					.setTooltip(tooltip("pushable_surveyors")),
 				PPConfig.PUSHABLE_SURVEYORS
 			);
-			FrozenClothConfig.createSubCategory(entryBuilder, category, text("trailiertales"),
+			FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("trailiertales"),
 				false,
 				tooltip("trailiertales"),
 				pushableSurveyors
@@ -225,12 +225,12 @@ public final class PPConfigGui {
 
 		// NETHERIER NETHER
 		if (NETHERIERNETHER) {
-			final var pushableNetherReactorCores = FrozenClothConfig.syncedEntry(
+			final var pushableNetherReactorCores = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_nether_reactor_cores"), PPConfig.PUSHABLE_NETHER_REACTOR_CORES.getWithSync())
 					.setTooltip(tooltip("pushable_nether_reactor_cores")),
 				PPConfig.PUSHABLE_NETHER_REACTOR_CORES
 			);
-			FrozenClothConfig.createSubCategory(entryBuilder, category, text("netheriernether"),
+			FrozenLibClothConfigGuiHelper.createSubCategory(entryBuilder, category, text("netheriernether"),
 				false,
 				tooltip("netheriernether"),
 				pushableNetherReactorCores

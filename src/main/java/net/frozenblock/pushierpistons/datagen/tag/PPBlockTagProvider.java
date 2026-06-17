@@ -21,15 +21,16 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.frozenblock.lib.tag.api.FrozenBlockTags;
+import net.frozenblock.lib.tag.api.FrozenLibBlockTags;
 import net.frozenblock.pushierpistons.tag.PPBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.references.BlockIds;
+import net.minecraft.references.BlockItemIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
@@ -39,7 +40,7 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 
 	@Override
 	protected void addTags(HolderLookup.Provider registries) {
-		this.valueLookupBuilder(FrozenBlockTags.HAS_PUSHABLE_BLOCK_ENTITY)
+		this.builder(FrozenLibBlockTags.HAS_PUSHABLE_BLOCK_ENTITY)
 			// STORAGE
 			.addOptionalTag(PPBlockTags.PUSHABLE_CHESTS)
 			.addOptionalTag(PPBlockTags.PUSHABLE_BARRELS)
@@ -75,72 +76,72 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 			.addOptionalTag(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES);
 
 		// STORAGE
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CHESTS)
+		this.builder(PPBlockTags.PUSHABLE_CHESTS)
 			.addOptionalTag(ConventionalBlockTags.CHESTS);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_BARRELS)
+		this.builder(PPBlockTags.PUSHABLE_BARRELS)
 			.addOptionalTag(ConventionalBlockTags.BARRELS);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CHISELED_BOOKSHELVES)
-			.add(Blocks.CHISELED_BOOKSHELF);
+		this.builder(PPBlockTags.PUSHABLE_CHISELED_BOOKSHELVES)
+			.add(BlockItemIds.CHISELED_BOOKSHELF);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_LECTERNS)
-			.add(Blocks.LECTERN);
+		this.builder(PPBlockTags.PUSHABLE_LECTERNS)
+			.add(BlockItemIds.LECTERN);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_SHELVES)
+		this.builder(PPBlockTags.PUSHABLE_SHELVES)
 			.addOptionalTag(BlockTags.WOODEN_SHELVES);
 
 		// UTILITY
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_FURNACES)
-			.add(Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.SMOKER);
+		this.builder(PPBlockTags.PUSHABLE_FURNACES)
+			.add(BlockItemIds.FURNACE, BlockItemIds.BLAST_FURNACE, BlockItemIds.SMOKER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_BREWING_STANDS)
-			.add(Blocks.BREWING_STAND);
+		this.builder(PPBlockTags.PUSHABLE_BREWING_STANDS)
+			.add(BlockItemIds.BREWING_STAND);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_ENCHANTING_TABLES)
-			.add(Blocks.ENCHANTING_TABLE);
+		this.builder(PPBlockTags.PUSHABLE_ENCHANTING_TABLES)
+			.add(BlockItemIds.ENCHANTING_TABLE);
 
 		// REDSTONE
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_ITEM_TRANSPORTERS)
-			.add(Blocks.HOPPER);
+		this.builder(PPBlockTags.PUSHABLE_ITEM_TRANSPORTERS)
+			.add(BlockItemIds.HOPPER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_EJECTORS)
-			.add(Blocks.DISPENSER, Blocks.DROPPER);
+		this.builder(PPBlockTags.PUSHABLE_EJECTORS)
+			.add(BlockItemIds.DISPENSER, BlockItemIds.DROPPER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CRAFTERS)
-			.add(Blocks.CRAFTER);
+		this.builder(PPBlockTags.PUSHABLE_CRAFTERS)
+			.add(BlockItemIds.CRAFTER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_DAYLIGHT_DETECTORS)
-			.add(Blocks.DAYLIGHT_DETECTOR);
+		this.builder(PPBlockTags.PUSHABLE_DAYLIGHT_DETECTORS)
+			.add(BlockItemIds.DAYLIGHT_DETECTOR);
 
 		// COMBAT
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CREAKING_HEARTS)
-			.add(Blocks.CREAKING_HEART);
+		this.builder(PPBlockTags.PUSHABLE_CREAKING_HEARTS)
+			.add(BlockItemIds.CREAKING_HEART);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_SPAWNERS)
-			.add(Blocks.SPAWNER);
+		this.builder(PPBlockTags.PUSHABLE_SPAWNERS)
+			.add(BlockItemIds.SPAWNER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_TRIAL_SPAWNERS)
-			.add(Blocks.TRIAL_SPAWNER);
+		this.builder(PPBlockTags.PUSHABLE_TRIAL_SPAWNERS)
+			.add(BlockItemIds.TRIAL_SPAWNER);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_VAULTS)
-			.add(Blocks.VAULT);
+		this.builder(PPBlockTags.PUSHABLE_VAULTS)
+			.add(BlockItemIds.VAULT);
 
 		// BUFFS
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_BEACONS)
-			.add(Blocks.BEACON);
+		this.builder(PPBlockTags.PUSHABLE_BEACONS)
+			.add(BlockItemIds.BEACON);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CONDUITS)
-			.add(Blocks.CONDUIT);
+		this.builder(PPBlockTags.PUSHABLE_CONDUITS)
+			.add(BlockItemIds.CONDUIT);
 
 		// OTHER
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_BEEHIVES)
+		this.builder(PPBlockTags.PUSHABLE_BEEHIVES)
 			.addOptionalTag(BlockTags.BEEHIVES);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_CAMPFIRES)
+		this.builder(PPBlockTags.PUSHABLE_CAMPFIRES)
 			.addOptionalTag(BlockTags.CAMPFIRES);
 
-		this.valueLookupBuilder(PPBlockTags.PUSHABLE_SIGNS)
+		this.builder(PPBlockTags.PUSHABLE_SIGNS)
 			.addOptionalTag(BlockTags.ALL_SIGNS);
 
 		// WILDER WILD
@@ -156,15 +157,15 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 			.addOptional(getKey("netheriernether", "nether_reactor_core"));
 
 		// EXCLUSIONS
-		this.valueLookupBuilder(PPBlockTags.EXCLUDED_BLOCK_ENTITIES)
-			.add(Blocks.END_PORTAL, Blocks.END_GATEWAY);
+		this.builder(PPBlockTags.EXCLUDED_BLOCK_ENTITIES)
+			.add(BlockIds.END_PORTAL, BlockIds.END_GATEWAY);
 
 		this.builder(PPBlockTags.EXCLUDED_BLOCK_ENTITIES)
 			.addOptional(getKey("wilderwild", "stone_chest"))
 			.addOptional(getKey("trailiertales", "coffin"));
 
 		// CHAINSTONE
-		this.valueLookupBuilder(PPBlockTags.CHAINSTONE_BLOCKS)
+		this.builder(PPBlockTags.CHAINSTONE_BLOCKS)
 			.addOptionalTag(ConventionalBlockTags.CHAINS)
 			.addOptionalTag(BlockTags.CHAINS);
 	}
