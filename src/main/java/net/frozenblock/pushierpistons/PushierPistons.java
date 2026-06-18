@@ -29,7 +29,6 @@ public final class PushierPistons extends FrozenModInitializer {
 
 	@Override
 	public void onInitialize(String modId, ModContainer container) {
-		PPConfig.CONFIG.save();
+		PPConfig.CONFIG.load(true);
 	}
-
 }
