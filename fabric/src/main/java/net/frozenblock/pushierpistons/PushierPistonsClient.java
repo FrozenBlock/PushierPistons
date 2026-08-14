@@ -20,14 +20,14 @@ package net.frozenblock.pushierpistons;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.frozenblock.lib.menu.api.SplashTextAPI;
+import net.frozenblock.lib.menu.api.SplashTextEvents;
 
 @Environment(EnvType.CLIENT)
 public final class PushierPistonsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		SplashTextAPI.addSplashLocation(PPConstants.id("texts/splashes.txt"));
+		SplashTextEvents.ADD_SOURCE_FILES.register(sourceFiles -> sourceFiles.add(PPConstants.id("texts/splashes.txt")));
 	}
 
 }
