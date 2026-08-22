@@ -21,14 +21,14 @@ import net.fabricmc.loader.api.ModContainer;
 import net.frozenblock.lib.entrypoint.api.FrozenModInitializer;
 import net.frozenblock.pushierpistons.config.PPConfig;
 
-public final class PushierPistons extends FrozenModInitializer {
+public final class PushierPistonsFabric extends FrozenModInitializer {
 
-	public PushierPistons() {
+	public PushierPistonsFabric() {
 		super(PPConstants.MOD_ID);
 	}
 
 	@Override
 	public void onInitialize(String modId, ModContainer container) {
-		PPConfig.CONFIG.load(true);
+		PushierPistons.init();
 	}
 }

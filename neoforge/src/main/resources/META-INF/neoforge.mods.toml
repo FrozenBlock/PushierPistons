@@ -14,6 +14,12 @@ issueTrackerURL="https://github.com/FrozenBlock/PushierPistons/issues"
 Lets Pistons push Block Entities, and implements Chainstone!
     '''
 
+[[mixins]]
+config="pushierpistons.chainstone.mixins.json"
+
+[[mixins]]
+config="pushierpistons.pushable_block_entity.mixins.json"
+
 [[ dependencies.pushierpistons ]]
     modId="neoforge"
     type="required"

@@ -20,23 +20,22 @@ package net.frozenblock.pushierpistons.config.gui;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.loader.api.FabricLoader;
 import net.frozenblock.lib.FrozenBools;
 import net.frozenblock.lib.config.clothconfig.FrozenLibClothConfigGuiHelper;
+import net.frozenblock.lib.platform.ModLoader;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
 import net.frozenblock.pushierpistons.config.PPConfig;
+import net.mehvahdjukaar.candlelight.api.ClientOnly;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Contract;
 
-@Environment(EnvType.CLIENT)
+@ClientOnly
 public final class PPConfigGui {
 	private static final boolean WILDERWILD = FrozenBools.HAS_WILDERWILD;
 	private static final boolean TRAILIERTALES = FrozenBools.HAS_TRAILIERTALES;
-	private static final boolean NETHERIERNETHER = FabricLoader.getInstance().isModLoaded("netheriernether");
+	private static final boolean NETHERIERNETHER = ModLoader.isModLoaded("netheriernether");
 
 	private static void setupEntries(ConfigCategory category, ConfigEntryBuilder entryBuilder) {
 		category.addEntry(

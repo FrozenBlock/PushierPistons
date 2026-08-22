@@ -21,10 +21,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.frozenblock.pushierpistons.PushierPistons"
+      "net.frozenblock.pushierpistons.PushierPistonsFabric"
     ],
     "client": [
-      "net.frozenblock.pushierpistons.PushierPistonsClient"
+      "net.frozenblock.pushierpistons.PushierPistonsClientFabric"
     ],
     "modmenu": [
       "net.frozenblock.pushierpistons.config.gui.ModMenuIntegration"

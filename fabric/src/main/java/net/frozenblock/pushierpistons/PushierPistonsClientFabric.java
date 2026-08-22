@@ -23,11 +23,11 @@ import net.fabricmc.api.Environment;
 import net.frozenblock.lib.menu.api.SplashTextEvents;
 
 @Environment(EnvType.CLIENT)
-public final class PushierPistonsClient implements ClientModInitializer {
+public final class PushierPistonsClientFabric implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		SplashTextEvents.ADD_SOURCE_FILES.register(sourceFiles -> sourceFiles.add(PPConstants.id("texts/splashes.txt")));
+		PushierPistonsClient.init();
 	}
 
 }

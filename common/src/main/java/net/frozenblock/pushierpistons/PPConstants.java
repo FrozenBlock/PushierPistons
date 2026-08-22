@@ -17,7 +17,7 @@
 
 package net.frozenblock.pushierpistons;
 
-import net.fabricmc.loader.api.FabricLoader;
+import net.frozenblock.lib.platform.ModLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Contract;
@@ -32,7 +32,7 @@ public final class PPConstants {
 	 * <p>
 	 * It's smart to use this for at least registries.
 	 */
-	public static boolean UNSTABLE_LOGGING = FabricLoader.getInstance().isDevelopmentEnvironment();
+	public static boolean UNSTABLE_LOGGING = ModLoader.isDevelopmentEnvironment();
 
 	// LOGGING
 	public static void log(String message, boolean shouldLog) {
