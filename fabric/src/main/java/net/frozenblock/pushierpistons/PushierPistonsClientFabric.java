@@ -20,7 +20,6 @@ package net.frozenblock.pushierpistons;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.frozenblock.lib.menu.api.SplashTextEvents;
 
 @Environment(EnvType.CLIENT)
 public final class PushierPistonsClientFabric implements ClientModInitializer {
