@@ -22,7 +22,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 @Environment(EnvType.CLIENT)
-public final class PushierPistonsClientFabric implements ClientModInitializer {
+public final class PushierPistonsFabricClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {

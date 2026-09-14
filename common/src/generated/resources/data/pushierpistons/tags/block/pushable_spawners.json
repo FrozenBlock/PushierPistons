@@ -1,5 +1,13 @@
 {
   "values": [
-    "minecraft:spawner"
+    "minecraft:spawner",
+    {
+      "id": "netheriernether:blazier",
+      "required": false
+    },
+    {
+      "id": "netheriernether:reinforced_blazier",
+      "required": false
+    }
   ]
 }

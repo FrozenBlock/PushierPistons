@@ -20,7 +20,6 @@ package net.frozenblock.pushierpistons;
 import net.frozenblock.lib.platform.ModLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 
 public final class PPConstants {
@@ -67,7 +66,6 @@ public final class PPConstants {
 		return id(path).toString();
 	}
 
-	@Contract(pure = true)
 	public static String safeString(String path) {
 		return MOD_ID + "_" + path;
 	}
@@ -75,7 +73,6 @@ public final class PPConstants {
 	/**
 	 * @return A text component for use in a Config GUI
 	 */
-	@Contract(value = "_ -> new", pure = true)
 	public static Component text(String key) {
 		return Component.translatable("option." + MOD_ID + "." + key);
 	}
@@ -83,8 +80,9 @@ public final class PPConstants {
 	/**
 	 * @return A tooltip component for use in a Config GUI
 	 */
-	@Contract(value = "_ -> new", pure = true)
 	public static Component tooltip(String key) {
 		return Component.translatable("tooltip." + MOD_ID + "." + key);
 	}
+
+	private PPConstants() {}
 }

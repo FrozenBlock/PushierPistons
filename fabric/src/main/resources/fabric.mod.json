@@ -24,7 +24,7 @@
       "net.frozenblock.pushierpistons.PushierPistonsFabric"
     ],
     "client": [
-      "net.frozenblock.pushierpistons.PushierPistonsClientFabric"
+      "net.frozenblock.pushierpistons.PushierPistonsFabricClient"
     ],
     "modmenu": [
       "net.frozenblock.pushierpistons.config.gui.ModMenuIntegration"
@@ -34,8 +34,6 @@
     ]
   },
   "mixins": [
-    "pushierpistons.chainstone.mixins.json",
-    "pushierpistons.pushable_block_entity.mixins.json"
   ],
   "accessWidener": "pushierpistons.classtweaker",
   "depends": {

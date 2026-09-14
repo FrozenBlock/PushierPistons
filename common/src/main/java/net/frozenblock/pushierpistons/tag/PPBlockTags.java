@@ -65,11 +65,9 @@ public final class PPBlockTags {
 	// CHAINSTONE
 	public static final TagKey<Block> CHAINSTONE_BLOCKS = bind("chainstone_blocks");
 
-	private PPBlockTags() {
-		throw new UnsupportedOperationException("PPBlockTags contains only static declarations.");
+	private static TagKey<Block> bind(String name) {
+		return TagKey.create(Registries.BLOCK, PPConstants.id(name));
 	}
 
-	private static TagKey<Block> bind(String path) {
-		return TagKey.create(Registries.BLOCK, PPConstants.id(path));
-	}
+	private PPBlockTags() {}
 }

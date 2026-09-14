@@ -31,7 +31,6 @@ public enum ChainstoneType implements StringRepresentable {
 	CHAIN_FACING_INTO(1, "chain_facing_into"),
 	CHAINS_ALONG_SAME_AXIS(2, "chains_along_same_axis"),
 	ADJACENT_CHAINS_FACING_INTO(3, "adjacent_chains_facing_into");
-
 	public static final Codec<ChainstoneType> CODEC = StringRepresentable.fromEnum(ChainstoneType::values);
 	private static final IntFunction<ChainstoneType> BY_ID = ByIdMap.continuous(t -> t.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
 	public static final StreamCodec<ByteBuf, ChainstoneType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, t -> t.id);

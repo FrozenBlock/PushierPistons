@@ -23,11 +23,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ChainstoneHelper {
+public final class ChainstoneHelper {
 
 	public static boolean isChainstoneBlock(BlockState state) {
-		final ChainstoneType type = PPConfig.CHAINSTONE_TYPE.get();
-		if (type == ChainstoneType.DISABLED) return false;
+		if (PPConfig.CHAINSTONE_TYPE.get() == ChainstoneType.DISABLED) return false;
 		return state.is(PPBlockTags.CHAINSTONE_BLOCKS);
 	}
 
@@ -65,4 +64,5 @@ public class ChainstoneHelper {
 		return verifyFacingInto(state1, pushAxis) || verifyFacingInto(state2, pushAxis);
 	}
 
+	private ChainstoneHelper() {}
 }

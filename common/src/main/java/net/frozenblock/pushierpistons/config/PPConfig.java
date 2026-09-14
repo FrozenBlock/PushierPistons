@@ -25,7 +25,7 @@ import net.frozenblock.lib.config.v2.registry.ID;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
 
-public class PPConfig {
+public final class PPConfig {
 	public static final ConfigData<?> CONFIG = ConfigData.createAndRegister(
 		ID.of(PPConstants.MOD_ID, "main"),
 		ConfigSettings.JSON5_UNQUOTED_KEYS
@@ -80,6 +80,7 @@ public class PPConfig {
 
 	// SIMPLE COPPER PIPES
 	public static final ConfigEntry<Boolean> PUSHABLE_COPPER_PIPES = CONFIG.entry("pushableCopperPipes", EntryType.BOOL, false);
-
 	public static final ConfigEntry<Boolean> PUSHABLE_COPPER_FITTINGS = CONFIG.entry("pushableCopperFittings", EntryType.BOOL, false);
+
+	private PPConfig() {}
 }

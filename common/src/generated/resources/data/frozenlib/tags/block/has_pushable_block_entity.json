@@ -95,14 +95,6 @@
     {
       "id": "#pushierpistons:pushable_nether_reactor_cores",
       "required": false
-    },
-    {
-      "id": "#pushierpistons:pushable_copper_pipes",
-      "required": false
-    },
-    {
-      "id": "#pushierpistons:pushable_copper_fittings",
-      "required": false
     }
   ]
 }

@@ -34,8 +34,7 @@ public final class PPDataGenerator implements DataGeneratorEntrypoint {
 	}
 
 	@Override
-	public void buildRegistry(RegistrySetBuilder builder) {
-	}
+	public void buildRegistry(RegistrySetBuilder builder) {}
 
 	@Override
 	public String getEffectiveModId() {

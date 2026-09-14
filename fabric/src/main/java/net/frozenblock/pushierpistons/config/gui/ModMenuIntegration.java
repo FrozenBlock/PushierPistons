@@ -19,12 +19,11 @@ package net.frozenblock.pushierpistons.config.gui;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.frozenblock.lib.FrozenBools;
+import net.mehvahdjukaar.candlelight.api.ClientOnly;
 import net.minecraft.client.gui.screens.Screen;
 
-@Environment(EnvType.CLIENT)
+@ClientOnly
 public final class ModMenuIntegration implements ModMenuApi {
 
 	@Override
@@ -32,5 +31,4 @@ public final class ModMenuIntegration implements ModMenuApi {
         if (FrozenBools.HAS_CLOTH_CONFIG) return PPConfigGui::buildScreen;
         return screen -> null;
     }
-
 }
