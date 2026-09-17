@@ -8,7 +8,7 @@ issueTrackerURL="https://github.com/FrozenBlock/PushierPistons/issues"
     version="${mod_version}"
     displayName="Pushier Pistons"
     displayURL="https://modrinth.com/mod/pushier-pistons"
-    logoFile="assets/pushierpistons/icon.png"
+    iconFile="assets/pushierpistons/icon.png"
     authors="Lunade"
     description='''
 Lets Pistons push Block Entities, and implements Chainstone!
