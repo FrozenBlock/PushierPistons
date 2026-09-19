@@ -1,9 +1,14 @@
 plugins {
     id("net.frozenblock.triangle.neoforge")
     id("org.quiltmc.gradle.licenser")
+    checkstyle
 }
 
-val mod_id: String by project
+checkstyle {
+    configFile = rootProject.file("checkstyle.xml")
+    toolVersion = "10.20.2"
+}
+
 val mod_version: String by project
 val minecraft_version: String by project
 val maven_group: String by project
@@ -54,6 +59,17 @@ val licenseChecks: Boolean = githubActions
 
 val applyLicenses: Task by tasks
 
+dependencies {
+    // FrozenLib
+    api("net.frozenblock:frozenlib-neoforge:${frozenlib_version}")?.let {
+        accessTransformers(it)
+        interfaceInjectionData(it)
+    }
+
+    // Cloth Config
+    implementation("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
+}
+
 tasks {
     license {
         if (licenseChecks) {
@@ -62,49 +78,6 @@ tasks {
             include("**/*.java")
         }
     }
-
-    processResources {
-        val properties = mapOf("mod_version" to getModVersion())
-        inputs.properties(properties)
-        filesMatching("META-INF/neoforge.mods.toml") {
-            expand(properties)
-        }
-    }
-
-    withType(JavaCompile::class) {
-        options.encoding = "UTF-8"
-        options.release = 25
-        options.isFork = true
-        options.isIncremental = true
-    }
-}
-
-val loaderAttribute = Attribute.of("io.github.mcgradleconventions.loader", String::class.java)
-val loaderVariants = setOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements")
-configurations.all {
-    if (name in loaderVariants) {
-        attributes {
-            attribute(loaderAttribute, "neoforge")
-        }
-    }
-}
-sourceSets.configureEach {
-    listOf(compileClasspathConfigurationName, runtimeClasspathConfigurationName).forEach { variant ->
-        configurations.named(variant) {
-            attributes {
-                attribute(loaderAttribute, "neoforge")
-            }
-        }
-    }
-}
-
-dependencies {
-    api("net.frozenblock:frozenlib-neoforge:${frozenlib_version}")?.let {
-        accessTransformers(it)
-        interfaceInjectionData(it)
-    }
-
-    implementation("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
 }
 
 java {

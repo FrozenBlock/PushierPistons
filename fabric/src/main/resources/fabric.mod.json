@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "${mod_id}",
-  "version": "${version}",
-  "name": "Pushier Pistons",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
   "description": "Lets Pistons push Block Entities, and implements Chainstone!",
   "authors": [
     "Lunade"
@@ -12,11 +12,11 @@
     "Ethan Stokes"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/pushier-pistons",
-    "sources": "https://github.com/FrozenBlock/PushierPistons",
-    "issues": "https://github.com/FrozenBlock/PushierPistons/issues"
+    "homepage": "${mod_url}",
+    "sources": "${source_url}",
+    "issues": "${issues_url}"
   },
-  "license": "FrozenBlock Modding Oasis License v1.0",
+  "license": "${mod_license}",
   "icon": "assets/pushierpistons/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -43,7 +43,8 @@
     "java": ">=25"
   },
   "suggests": {
-    "cloth-config": "*"
+    "cloth-config": "*",
+    "modmenu": "*"
   },
   "custom": {
     "modmenu": {
