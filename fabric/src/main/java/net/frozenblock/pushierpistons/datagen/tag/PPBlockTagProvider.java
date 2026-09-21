@@ -22,7 +22,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.tag.api.FrozenLibBlockTags;
 import net.frozenblock.pushierpistons.tag.PPBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.references.BlockIds;
@@ -41,41 +40,6 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 
 	@Override
 	protected void addTags(HolderLookup.Provider registries) {
-		this.builder(FrozenLibBlockTags.HAS_PUSHABLE_BLOCK_ENTITY)
-			// STORAGE
-			.addOptionalTag(PPBlockTags.PUSHABLE_CHESTS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_BARRELS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_CHISELED_BOOKSHELVES)
-			.addOptionalTag(PPBlockTags.PUSHABLE_LECTERNS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_SHELVES)
-			// UTILITY
-			.addOptionalTag(PPBlockTags.PUSHABLE_FURNACES)
-			.addOptionalTag(PPBlockTags.PUSHABLE_BREWING_STANDS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_ENCHANTING_TABLES)
-			// REDSTONE
-			.addOptionalTag(PPBlockTags.PUSHABLE_ITEM_TRANSPORTERS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_EJECTORS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_CRAFTERS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_DAYLIGHT_DETECTORS)
-			// COMBAT
-			.addOptionalTag(PPBlockTags.PUSHABLE_CREAKING_HEARTS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_SPAWNERS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_TRIAL_SPAWNERS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_VAULTS)
-			// BUFFS
-			.addOptionalTag(PPBlockTags.PUSHABLE_BEACONS)
-			.addOptionalTag(PPBlockTags.PUSHABLE_CONDUITS)
-			// OTHER
-			.addOptionalTag(PPBlockTags.PUSHABLE_BEEHIVES)
-			.addOptionalTag(PPBlockTags.PUSHABLE_CAMPFIRES)
-			.addOptionalTag(PPBlockTags.PUSHABLE_SIGNS)
-			// WILDER WILD
-			.addOptionalTag(PPBlockTags.PUSHABLE_GEYSERS)
-			// TRAILIER TALES
-			.addOptionalTag(PPBlockTags.PUSHABLE_SURVEYORS)
-			// NETHERIER NETHER
-			.addOptionalTag(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES);
-
 		// STORAGE
 		this.builder(PPBlockTags.PUSHABLE_CHESTS)
 			.addOptionalTag(ConventionalBlockTags.CHESTS);
