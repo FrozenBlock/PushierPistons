@@ -21,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.frozenblock.lib.FrozenLibConstants;
+import net.frozenblock.lib.FrozenLibEarlyConstants;
 import net.frozenblock.pushierpistons.tag.PPBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.references.BlockIds;
@@ -85,8 +85,8 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 
 		this.builder(PPBlockTags.PUSHABLE_SPAWNERS)
 			.add(BlockItemIds.SPAWNER)
-			.addOptional(getKey(FrozenLibConstants.NETHERIER_NETHER_MOD_ID, "blazier"))
-			.addOptional(getKey(FrozenLibConstants.NETHERIER_NETHER_MOD_ID, "reinforced_blazier"));
+			.addOptional(getKey(FrozenLibEarlyConstants.NETHERIER_NETHER_MOD_ID, "blazier"))
+			.addOptional(getKey(FrozenLibEarlyConstants.NETHERIER_NETHER_MOD_ID, "reinforced_blazier"));
 
 		this.builder(PPBlockTags.PUSHABLE_TRIAL_SPAWNERS)
 			.add(BlockItemIds.TRIAL_SPAWNER);
@@ -113,21 +113,21 @@ public final class PPBlockTagProvider extends FabricTagsProvider.BlockTagsProvid
 
 		// WILDER WILD
 		this.builder(PPBlockTags.PUSHABLE_GEYSERS)
-			.addOptional(getKey(FrozenLibConstants.WILDER_WILD_MOD_ID, "geyser"));
+			.addOptional(getKey(FrozenLibEarlyConstants.WILDER_WILD_MOD_ID, "geyser"));
 
 		// TRAILIER TALES
 		this.builder(PPBlockTags.PUSHABLE_SURVEYORS)
-			.addOptional(getKey(FrozenLibConstants.TRAILIER_TALES_MOD_ID, "surveyor"));
+			.addOptional(getKey(FrozenLibEarlyConstants.TRAILIER_TALES_MOD_ID, "surveyor"));
 
 		// NETHERIER NETHER
 		this.builder(PPBlockTags.PUSHABLE_NETHER_REACTOR_CORES)
-			.addOptional(getKey(FrozenLibConstants.NETHERIER_NETHER_MOD_ID, "nether_reactor_core"));
+			.addOptional(getKey(FrozenLibEarlyConstants.NETHERIER_NETHER_MOD_ID, "nether_reactor_core"));
 
 		// EXCLUSIONS
 		this.builder(PPBlockTags.EXCLUDED_BLOCK_ENTITIES)
 			.add(BlockIds.END_PORTAL, BlockIds.END_GATEWAY)
-			.addOptional(getKey(FrozenLibConstants.WILDER_WILD_MOD_ID, "stone_chest"))
-			.addOptional(getKey(FrozenLibConstants.TRAILIER_TALES_MOD_ID, "coffin"))
+			.addOptional(getKey(FrozenLibEarlyConstants.WILDER_WILD_MOD_ID, "stone_chest"))
+			.addOptional(getKey(FrozenLibEarlyConstants.TRAILIER_TALES_MOD_ID, "coffin"))
 			.addOptionalTag(ConventionalBlockTags.RELOCATION_NOT_SUPPORTED);
 
 		// CHAINSTONE
