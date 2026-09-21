@@ -20,22 +20,17 @@ package net.frozenblock.pushierpistons.config.gui;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.frozenblock.lib.FrozenBools;
+import net.frozenblock.lib.FrozenLibEarlyConstants;
 import net.frozenblock.lib.config.clothconfig.FrozenLibClothConfigGuiHelper;
-import net.frozenblock.lib.platform.ModLoader;
 import net.frozenblock.pushierpistons.PPConstants;
 import net.frozenblock.pushierpistons.chainstone.ChainstoneType;
 import net.frozenblock.pushierpistons.config.PPConfig;
 import net.mehvahdjukaar.candlelight.api.ClientOnly;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import org.jetbrains.annotations.Contract;
 
 @ClientOnly
 public final class PPConfigGui {
-	private static final boolean WILDERWILD = FrozenBools.HAS_WILDERWILD;
-	private static final boolean TRAILIERTALES = FrozenBools.HAS_TRAILIERTALES;
-	private static final boolean NETHERIERNETHER = ModLoader.isModLoaded("netheriernether");
 
 	private static void setupEntries(ConfigCategory category, ConfigEntryBuilder entryBuilder) {
 		category.addEntry(
@@ -195,7 +190,7 @@ public final class PPConfigGui {
 		);
 
 		// WILDER WILD
-		if (WILDERWILD) {
+		if (FrozenLibEarlyConstants.HAS_WILDER_WILD) {
 			final var pushableGeysers = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_geysers"), PPConfig.PUSHABLE_GEYSERS.getWithSync())
 					.setTooltip(tooltip("pushable_geysers")),
@@ -209,7 +204,7 @@ public final class PPConfigGui {
 		}
 
 		// TRAILIER TALES
-		if (TRAILIERTALES) {
+		if (FrozenLibEarlyConstants.HAS_TRAILIER_TALES) {
 			final var pushableSurveyors = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_surveyors"), PPConfig.PUSHABLE_SURVEYORS.getWithSync())
 					.setTooltip(tooltip("pushable_surveyors")),
@@ -223,7 +218,7 @@ public final class PPConfigGui {
 		}
 
 		// NETHERIER NETHER
-		if (NETHERIERNETHER) {
+		if (FrozenLibEarlyConstants.HAS_NETHERIER_NETHER) {
 			final var pushableNetherReactorCores = FrozenLibClothConfigGuiHelper.syncedEntry(
 				entryBuilder.startBooleanToggle(text("pushable_nether_reactor_cores"), PPConfig.PUSHABLE_NETHER_REACTOR_CORES.getWithSync())
 					.setTooltip(tooltip("pushable_nether_reactor_cores")),
@@ -246,18 +241,17 @@ public final class PPConfigGui {
 		return configBuilder.build();
 	}
 
-	@Contract(value = "_ -> new", pure = true)
 	public static Component text(String key) {
 		return Component.translatable("option." + PPConstants.MOD_ID + "." + key);
 	}
 
-	@Contract(value = "_ -> new", pure = true)
 	public static Component tooltip(String key) {
 		return Component.translatable("tooltip." + PPConstants.MOD_ID + "." + key);
 	}
 
-	@Contract(value = "_ -> new", pure = true)
 	public static Component enumNameProvider(String key) {
 		return Component.translatable("enum." + PPConstants.MOD_ID + "." + key);
 	}
+
+	private PPConfigGui() {}
 }

@@ -31,7 +31,7 @@ public final class PushableBlockEntityHelper {
 		// STORAGE
 		if (PPConfig.PUSHABLE_CHESTS.get() && state.is(PPBlockTags.PUSHABLE_CHESTS)) return PistonEvents.PushResult.SUCCESS;
 		if (PPConfig.PUSHABLE_BARRELS.get() && state.is(PPBlockTags.PUSHABLE_BARRELS)) return PistonEvents.PushResult.SUCCESS;
-		if (PPConfig.PUSHABLE_CHESTS.get() && state.is(PPBlockTags.PUSHABLE_CHESTS)) return PistonEvents.PushResult.SUCCESS;
+		if (PPConfig.PUSHABLE_CHISELED_BOOKSHELVES.get() && state.is(PPBlockTags.PUSHABLE_CHISELED_BOOKSHELVES)) return PistonEvents.PushResult.SUCCESS;
 		if (PPConfig.PUSHABLE_LECTERNS.get() && state.is(PPBlockTags.PUSHABLE_LECTERNS)) return PistonEvents.PushResult.SUCCESS;
 		if (PPConfig.PUSHABLE_SHELVES.get() && state.is(PPBlockTags.PUSHABLE_SHELVES)) return PistonEvents.PushResult.SUCCESS;
 

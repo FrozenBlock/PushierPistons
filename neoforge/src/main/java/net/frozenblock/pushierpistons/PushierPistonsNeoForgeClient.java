@@ -1,6 +1,6 @@
 package net.frozenblock.pushierpistons;
 
-import net.frozenblock.lib.platform.ModLoader;
+import net.frozenblock.lib.FrozenLibEarlyConstants;
 import net.frozenblock.pushierpistons.config.gui.PPConfigGui;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -14,11 +14,10 @@ public final class PushierPistonsNeoForgeClient {
 	public PushierPistonsNeoForgeClient(IEventBus modBus) {
 		PushierPistonsClient.init();
 
-		if (ModLoader.isModLoaded("cloth-config") || ModLoader.isModLoaded("cloth_config")) {
+		if (FrozenLibEarlyConstants.HAS_CLOTH_CONFIG) {
 			ModLoadingContext.get().registerExtensionPoint(
 				IConfigScreenFactory.class,
-				() -> (container, parent) ->
-					PPConfigGui.buildScreen(parent)
+				() -> (container, parent) -> PPConfigGui.buildScreen(parent)
 			);
 		}
 	}
